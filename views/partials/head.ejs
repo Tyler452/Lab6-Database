@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'Quote Finder' %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #1f1f1f;
+            margin: 0;
+            padding: 1.5rem;
+        }
+        .page-container {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        .page-title {
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #30384c;
+        }
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            align-items: flex-end;
+        }
+        .search-form input,
+        .search-form select {
+            min-width: 170px;
+        }
+        .results-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .quote-card {
+            border-left: 4px solid #5b6fcf;
+            background: #f9f9ff;
+            padding: 0.85rem;
+            margin-bottom: 0.85rem;
+            border-radius: 6px;
+        }
+        .likes-pill {
+            font-size: 0.8rem;
+            background: #007bff;
+            color: #ffffff;
+            padding: 0.15rem 0.65rem;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body>

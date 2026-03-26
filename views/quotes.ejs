@@ -1,0 +1,18 @@
+<%- include('partials/head', { title: 'Quotes' }) %>
+<div class="page-container">
+    <h1 class="page-title text-center mb-4">Quotes</h1>
+    <nav class="text-center mb-3"><a href="/">Back Home</a></nav>
+    <% if(rows.length === 0) { %>
+        <p class="text-center">No quotes found for that search.</p>
+    <% } else { %>
+        <ul class="results-list">
+            <% for(let quote of rows) { %>
+                <li class="quote-card">
+                    <p class="mb-1"><%= quote.quote %></p>
+                    <span class="text-muted">&mdash; <%= quote.firstName %> <%= quote.lastName %></span>
+                </li>
+            <% } %>
+        </ul>
+    <% } %>
+</div>
+<%- include('partials/footer') %>

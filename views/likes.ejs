@@ -1,0 +1,22 @@
+<%- include('partials/head', { title: 'Quotes by Likes' }) %>
+<div class="page-container">
+    <h1 class="page-title text-center mb-2">Quotes by Likes</h1>
+    <p class="text-center text-muted">Likes between <%= minLikes %> and <%= maxLikes %>.</p>
+    <nav class="text-center mb-3"><a href="/">Back Home</a></nav>
+    <% if(rows.length === 0) { %>
+        <p class="text-center">No quotes found in that range.</p>
+    <% } else { %>
+        <ul class="results-list">
+            <% for(let quote of rows) { %>
+                <li class="quote-card">
+                    <p class="mb-1"><%= quote.quote %></p>
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <span class="text-muted">&mdash; <%= quote.firstName %> <%= quote.lastName %></span>
+                        <span class="likes-pill"><%= quote.likes %> likes</span>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    <% } %>
+</div>
+<%- include('partials/footer') %>

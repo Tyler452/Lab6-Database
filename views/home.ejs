@@ -1,0 +1,38 @@
+<%- include('partials/head', { title: 'Lab 6 Quote Finder' }) %>
+<div class="page-container">
+    <h1 class="page-title text-center mb-4">Welcome to Quote Finder</h1>
+
+    <form action="/searchByKeyword" method="GET" class="search-form">
+        <label for="keyword" class="w-100">Keyword</label>
+        <input type="text" name="keyword" id="keyword" class="form-control" placeholder="e.g. hope">
+        <button class="btn btn-primary" id="search">Search By Keyword</button>
+    </form>
+
+    <form action="/searchByAuthor" method="GET" class="search-form">
+        <label for="author" class="w-100">Author</label>
+        <select name="authorId" id="author" class="form-control">
+            <% for(let author of authors) { %>
+                <option value="<%= author.authorId %>"><%= author.firstName %> <%= author.lastName %></option>
+            <% } %>
+        </select>
+        <button class="btn btn-secondary" id="searchByAuthor">Search By Author</button>
+    </form>
+
+    <form action="/searchByCategory" method="GET" class="search-form">
+        <label for="category" class="w-100">Category</label>
+        <select name="category" id="category" class="form-control">
+            <% for(let category of categories) { %>
+                <option value="<%= category.category %>"><%= category.category %></option>
+            <% } %>
+        </select>
+        <button class="btn btn-dark" id="searchByCategory">Search By Category</button>
+    </form>
+
+    <form action="/searchByLikes" method="GET" class="search-form">
+        <label class="w-100">Likes Range</label>
+        <input type="number" name="minLikes" id="minLikes" class="form-control" placeholder="Min" min="0">
+        <input type="number" name="maxLikes" id="maxLikes" class="form-control" placeholder="Max" min="0">
+        <button class="btn btn-info text-white" id="searchByLikes">Search By Likes</button>
+    </form>
+</div>
+<%- include('partials/footer') %>
