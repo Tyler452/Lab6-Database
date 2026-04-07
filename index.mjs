@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import express from 'express';
 import mysql from 'mysql2/promise';
 
@@ -6,12 +8,12 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 //for Express to get values using the POST method
 app.use(express.urlencoded({extended:true}));
-//setting up database connection pool, replace values in red
+//setting up database connection pool, replace values in red with environment variables
 const pool = mysql.createPool({
-    host: "hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    user: "qql8f5gjoz6h26i9",
-    password: "wxqdkp8x24gcm0b1",
-    database: "cwu2z0h9g8btcsgr",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PWD,
+    database: process.env.DB_DATABASE,
     connectionLimit: 10,
     waitForConnections: true
 });
