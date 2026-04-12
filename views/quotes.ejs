@@ -1,18 +1,42 @@
 <%- include('partials/head', { title: 'Quotes' }) %>
-<div class="page-container">
-    <h1 class="page-title text-center mb-4">Quotes</h1>
-    <nav class="text-center mb-3"><a href="/">Back Home</a></nav>
-    <% if(rows.length === 0) { %>
-        <p class="text-center">No quotes found for that search.</p>
+<div class="page-container results-page">
+    <div class="results-header">
+        <div>
+            <p class="hero-kicker mb-2">Search Results</p>
+            <h1 class="page-title mb-2">Quotes</h1>
+            <p class="results-subtitle mb-0"><%= searchLabel || 'Browse matching quotes below.' %></p>
+        </div>
+        <nav><a class="back-link" href="/">Back Home</a></nav>
+    </div>
+
+    <% if(rows.length===0) { %>
+        <p class="empty-state text-center">No quotes found for that search.</p>
     <% } else { %>
         <ul class="results-list">
             <% for(let quote of rows) { %>
                 <li class="quote-card">
-                    <p class="mb-1"><%= quote.quote %></p>
-                    <span class="text-muted">&mdash; <%= quote.firstName %> <%= quote.lastName %></span>
+                    <p class="quote-text mb-2"><%= quote.quote %></p>
+                    <a href="#" class="author-link" data-author-id="<%= quote.authorId %>">&mdash; <%= quote.firstName %> <%= quote.lastName %></a>
                 </li>
             <% } %>
         </ul>
     <% } %>
 </div>
+
+<div id="authorInfoDialog" class="author-modal" hidden>
+    <div class="author-modal__backdrop" data-close-modal="true"></div>
+    <div class="author-modal__content" role="dialog" aria-modal="true" aria-labelledby="authorName">
+        <button id="closeAuthorInfo" class="author-modal__close" type="button" aria-label="Close author details">Close</button>
+        <div class="author-modal__body">
+            <img id="authorImg" class="author-modal__image" alt="Author portrait" width="220" height="280" decoding="async" referrerpolicy="no-referrer" hidden>
+            <div class="author-modal__details">
+                <p class="hero-kicker mb-2">Author Details</p>
+                <h2 id="authorName" class="author-modal__title">Loading...</h2>
+                <p id="authorError" class="form-error"></p>
+                <div id="authorMeta" class="author-modal__meta"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/quotes.js"></script>
 <%- include('partials/footer') %>
